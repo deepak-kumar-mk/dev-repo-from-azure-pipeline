@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: Build 
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: drop1
+        path: |
+           ./file1.txt
