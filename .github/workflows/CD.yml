@@ -22,6 +22,7 @@ jobs:
 
     - name: bash
       run: | 
+        ls -la
         cd drop1
         ls -la 
         cd drop2
