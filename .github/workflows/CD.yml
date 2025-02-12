@@ -8,15 +8,16 @@ on:
       - success
   workflow_dispatch:
     inputs:
+      auto_trigger:
+        type: boolean
+        description: Auto Trigger 
+        default: true    
       build_workflow_run_id:
         type: string
         description: 'Build workflow run id (to retrieve artifacts)'
         required: true
         default: '-'  
-      Auto_trigger:
-        type: boolean
-        description: Auto Trigger 
-        default: true
+
         
 jobs:
   build-test:
@@ -27,6 +28,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Download artifact from Payload CI pipeline
+      if: ${{  github.event.inputs.auto_trigger == 'true' }}               
       id: download-artifact
       uses: dawidd6/action-download-artifact@v2
       with:
@@ -36,6 +38,7 @@ jobs:
         if_no_artifact_found: fail
 
     - name: Download Build artifact
+      if: ${{  github.event.inputs.auto_trigger == 'false' }}                   
       uses: actions/download-artifact@v4.1.0
       with:
         name: drop
