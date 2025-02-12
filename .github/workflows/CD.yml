@@ -15,7 +15,7 @@ on:
         default: '-'  
       Auto_trigger:
         type: boolean
-        description: True or False2  
+        description: Auto Trigger 
         default: true
         
 jobs:
