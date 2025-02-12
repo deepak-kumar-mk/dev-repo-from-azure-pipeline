@@ -17,8 +17,7 @@ on:
         description: 'Build workflow run id (to retrieve artifacts)'
         required: true
         default: '-'  
-
-        
+      
 jobs:
   build-test:
     name: Build 
@@ -27,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Download artifact from Payload CI pipeline
+    - name: Download latest artifact from Payload CI pipeline
       if: ${{  github.event.inputs.auto_trigger == 'true' }}               
       id: download-artifact
       uses: dawidd6/action-download-artifact@v2
@@ -37,7 +36,7 @@ jobs:
         repo: ${{ github.repository }}
         if_no_artifact_found: fail
 
-    - name: Download Build artifact
+    - name: Download Build artifact from pipeline run number
       if: ${{  github.event.inputs.auto_trigger == 'false' }}                   
       uses: actions/download-artifact@v4.1.0
       with:
