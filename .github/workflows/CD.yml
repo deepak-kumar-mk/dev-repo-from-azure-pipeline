@@ -8,10 +8,6 @@ on:
       - success
   workflow_dispatch:
     inputs:
-      trigger:
-        type: string
-        description: Auto Trigger or Manual Trigger
-        default: 'auto'    
       build_workflow_run_id:
         type: string
         description: 'Build workflow run id (to retrieve artifacts)'
@@ -49,13 +45,7 @@ jobs:
       run: | 
         ls -la
         cd ./drop1
-        ls -la
-        
-    - name: bash
-      run: | 
-        ls -la
-        cd ./drop2
-        ls -la
+        ls -la        
         
     - name: Set tar environment variable
       run: echo "tar=mytar1" >> $GITHUB_ENV
