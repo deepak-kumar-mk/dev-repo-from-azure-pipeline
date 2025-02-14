@@ -26,9 +26,10 @@ jobs:
            ./file2.txt           
         
 
-    - name: Set output value
-      id: set_value
-      run: echo "dev=dev" >> $GITHUB_ENV
+    - name: Run some command and set output
+      id: set_output
+      run: |
+        echo "::set-output name=env_value::dev"
 
     outputs:
-      dev_value: ${{ steps.set_value.outputs.dev_value }}
+      env_value: ${{ steps.set_value.outputs.env_value }}
