@@ -16,14 +16,15 @@ on:
       
 jobs:
   deploy-dev:  
-    name: devdeploy 
-    if: ${{ github.event.workflow_run.outputs.custom_value == 'deepadev' }}
-    
+    name: devdeploy     
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     
+    - name: Get custom value from CI
+      run: echo "The custom value from CI is ${{ github.event.workflow_run.outputs.custom_value }}"
+
     - name: Download latest artifact from Payload CI pipeline
       if: github.event_name != 'workflow_dispatch'    
       id: download-artifact
