@@ -23,4 +23,11 @@ jobs:
       with:
         name: drop2
         path: |
-           ./file2.txt
+           ./file2.txt           
+           
+    - name: Set custom value
+      id: set_value
+      run: echo "::set-output name=custom_value::dev"
+
+    outputs:
+      custom_value: ${{ steps.set_value.outputs.custom_value }}           
