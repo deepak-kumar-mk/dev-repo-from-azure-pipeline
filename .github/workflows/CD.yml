@@ -15,6 +15,17 @@ on:
         default: '-'  
       
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Access output from CI Workflow
+        run: |
+          echo "Deploying version ${{ github.event.workflow_run.outputs.version }}"
+          
   deploy-dev:  
     name: devdeploy     
     runs-on: ubuntu-latest
