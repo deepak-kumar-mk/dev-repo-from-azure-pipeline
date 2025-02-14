@@ -17,7 +17,7 @@ on:
 jobs:
   deploy-dev:  
     name: devdeploy 
-    if: github.ref == 'refs/heads/dev'
+    if: ${{ github.event.workflow_run.outputs.custom_value == 'deepadev' }}
     
     runs-on: ubuntu-latest
 
@@ -57,7 +57,7 @@ jobs:
 
   deploy-qa:
     name: qadeploy 
-    if: github.ref == 'refs/heads/qa'
+    if: ${{ github.event.workflow_run.outputs.custom_value == 'deepa' }}
     
     runs-on: ubuntu-latest
 
