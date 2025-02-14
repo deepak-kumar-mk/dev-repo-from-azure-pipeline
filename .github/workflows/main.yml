@@ -24,12 +24,14 @@ jobs:
         name: drop2
         path: |
            ./file2.txt           
-        
+      
 
-    - name: Run some command and set output
+
+    - name: Set custom output
       id: set_output
       run: |
-        echo "::set-output name=env_value::dev"
-
+        echo "custom_value=some_value" >> $GITHUB_ENV
+          
     outputs:
-      env_value: ${{ steps.set_value.outputs.env_value }}
+      result: ${{ steps.set_output.outputs.custom_value }}  # This output will be used later
+
