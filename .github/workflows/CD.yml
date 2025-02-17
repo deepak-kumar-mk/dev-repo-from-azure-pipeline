@@ -104,8 +104,10 @@ jobs:
       run: echo "The tar file is $tar"      
 
   deploy-environment:
-    name: deploytoothers    
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy_env == 'pat' }}    
+    name: deploytoothers   
+    if: ${{ github.event_name == 'workflow_dispatch'}}
+    
+    #if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy_env == 'pat' }}    
     runs-on: ubuntu-latest
 
     steps:
