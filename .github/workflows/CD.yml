@@ -62,7 +62,7 @@ jobs:
 
   deploy-qa:
     name: qadeploy 
-    if: github.event_name == 'workflow_dispatch' && ${{ inputs.deploy_env }} == 'pat'
+    if: github.event_name == 'workflow_dispatch'
     
     runs-on: ubuntu-latest
 
