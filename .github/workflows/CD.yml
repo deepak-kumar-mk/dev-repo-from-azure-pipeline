@@ -22,7 +22,7 @@ on:
 jobs:
   deploy-dev:  
     name: devdeploy 
-    if: ${{ inputs.deploy_env }} == 'dev'
+    if: ${{ inputs.deploy_env == 'dev' }}
      # if: github.event_name != 'workflow_dispatch'
     
     runs-on: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
 
   deploy-qa:
     name: qadeploy 
-    if: ${{ inputs.deploy_env }} == 'pat'
+    if: ${{ inputs.deploy_env == 'pat' }}
     
     #if: github.event_name == 'workflow_dispatch'
     
