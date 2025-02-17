@@ -6,6 +6,9 @@ on:
     types:
       - completed
       - success
+    branches:
+      - main 
+      - qa
   workflow_dispatch:
     inputs:
       build_workflow_run_id:
