@@ -13,11 +13,16 @@ on:
         description: 'Build workflow run id (to retrieve artifacts)'
         required: true
         default: '-'  
+      deploy_env:
+        type: string
+        description: 'Enter the deployment env like pat or iit2'
+        required: true
+        default: 'dev'          
       
 jobs:
   deploy-dev:  
     name: devdeploy 
-    if: github.ref == 'refs/heads/dev'
+    if: github.event_name != 'workflow_dispatch' && ${{ inputs.deploy_env }} == 'dev'
     
     runs-on: ubuntu-latest
 
@@ -57,7 +62,7 @@ jobs:
 
   deploy-qa:
     name: qadeploy 
-    if: github.ref == 'refs/heads/qa'
+    if: github.event_name == 'workflow_dispatch' && ${{ inputs.deploy_env }} == 'pat'
     
     runs-on: ubuntu-latest
 
