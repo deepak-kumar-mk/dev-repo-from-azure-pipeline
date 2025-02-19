@@ -63,7 +63,7 @@ jobs:
 
   deploy-par:
     name: qadeploy 
-    if: ${{ github.event.workflow_run.head_branch =~ '^release/pat-v\d+\.\d+\.\d+' && github.event.workflow_run.conclusion == 'success' }}   
+    if: ${{ github.event.workflow_run.head_branch =~ '^release/pat-v\d+\.\d+\.\d+\.\d+' && github.event.workflow_run.conclusion == 'success' }}   
     
       #if: github.event_name == 'workflow_dispatch' && ${{ inputs.deploy_env == 'pat' }}
     
